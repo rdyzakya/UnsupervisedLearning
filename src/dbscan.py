@@ -23,7 +23,7 @@ class DBScanClustering:
 			res += delta_sqr
 		return np.sqrt(res)
 
-	def train(self,df,x_columns,eps,min_point):
+	def fit(self,df,x_columns,eps,min_point):
 		self.x_columns = [df.columns[i] for i in x_columns]
 		self.df = df.copy()
 		self.df['visited'] = 0

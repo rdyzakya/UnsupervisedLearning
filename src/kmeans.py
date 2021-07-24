@@ -15,12 +15,6 @@ class KMeansClustering:
 		self.df = None
 
 	def euclidean_distance(self,this_row,other):
-		# r1 = this_row[self.x_columns]
-		# r2 = other[self.x_columns]
-		# r1 = np.array(r1)
-		# r2 = np.array(r2)
-		# delta_sqr = (r1-r2)**2
-		# return np.sqrt(delta_sqr.sum())
 		res = 0
 		for cols in self.x_columns:
 			delta = this_row[cols] - other[cols]
@@ -30,12 +24,6 @@ class KMeansClustering:
 		return np.sqrt(res)
 
 	def manhattan_distance(self,this_row,other):
-		# r1 = this_row[self.x_columns]
-		# r2 = other[self.x_columns]
-		# r1 = np.array(r1)
-		# r2 = np.array(r2)
-		# delta_abs = np.abs(r1-r2)
-		# return np.sqrt(delta_abs.sum())
 		res = 0
 		for cols in self.x_columns:
 			delta = this_row[cols] - other[cols]
@@ -58,7 +46,7 @@ class KMeansClustering:
 		return min_idx
 
 
-	def train(self,df_,x_columns,k,how='euclidean'):
+	def fit(self,df_,x_columns,k,how='euclidean'):
 		df = df_.copy()
 		self.x_columns = [df.columns[i] for i in x_columns]
 		self.centroids = df.sample(k).copy()
@@ -90,5 +78,3 @@ class KMeansClustering:
 			data[self.x_columns[i]] = temp[i]
 
 		return self.calculate_nearest(data,self.how)
-
-

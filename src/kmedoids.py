@@ -56,7 +56,7 @@ class KMedoidClustering:
 		del df['Distance']
 		return res
 
-	def train(self,df_,x_columns,k,how='euclidean'):
+	def fit(self,df_,x_columns,k,how='euclidean'):
 		start = time.time()
 		df = df_.copy()
 		self.x_columns = [df.columns[i] for i in x_columns]
